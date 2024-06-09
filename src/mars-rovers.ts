@@ -1,15 +1,24 @@
 import { Rover } from './rover';
-import { CardinalPointType } from './types';
+import { CardinalPointType, Plateau } from './types';
 
 export class MarsRoversChallenge {
-  plateau: number[][] = [[0, 0]];
+  plateau: Plateau = {
+    start: {
+      x: 0,
+      y: 0
+    },
+    end: {
+      x: undefined,
+      y: undefined
+    }
+  }
   rovers: Rover[] = [];
   input: string[];
 
   constructor(input: string[]) {
     this.input = input;
 
-    this.plateau.push(this.setPlateau());
+    this.plateau.end = this.setPlateauLimits();
     this.rovers = this.setRovers();
   }
 
@@ -19,11 +28,14 @@ export class MarsRoversChallenge {
     return this.lastPositions;
   }
 
-  private setPlateau() {
-    const parsedPlateau = this.input[0].split(' ').map(digit => +digit);
+  private setPlateauLimits() {
+    const parsedLimits = this.input[0].split(' ').map(digit => +digit);
     this.input.shift(); // remove the used plateau instruction & leave only rover instructions on the array
 
-    return parsedPlateau;
+    return {
+      x: parsedLimits[0],
+      y: parsedLimits[1]
+    };
   }
 
   private setRovers() {
@@ -32,7 +44,11 @@ export class MarsRoversChallenge {
       const position = this.input[i].split(' ');
 
       rovers.push(new Rover(
-        [+position[0], +position[1], position[2] as CardinalPointType],
+        {
+          x: +position[0],
+          y: +position[1],
+          dir: position[2] as CardinalPointType
+        },
         this.input[i+1]
       ));
     }
@@ -56,12 +72,11 @@ export class MarsRoversChallenge {
   }
 
   private get lastPositions() {
-    return this.rovers.map(rov => rov.finalPos.join(' ')).join('\n');
+    return this.rovers.map(rov => `${rov.finalPos.x} ${rov.finalPos.y} ${rov.finalPos.dir}`).join('\n');
   }
 
   private checkDrop(rov: Rover, rovId: number) {
-    const maxPos = [this.plateau[1][0], this.plateau[1][1]];
-    if (rov.currentPos[0] < 0 || rov.currentPos[0] > maxPos[0] || rov.currentPos[1] < 0 || rov.currentPos[1] > maxPos[1]) {
+    if (rov.currentPos.x < 0 || rov.currentPos.x > this.plateau.end.x! || rov.currentPos.y < 0 || rov.currentPos.y > this.plateau.end.y!) {
       throw new Error(`ROVER #${rovId+1} FELL FROM THE PLATEAU`);
     }
   }

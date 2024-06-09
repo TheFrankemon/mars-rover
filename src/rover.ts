@@ -12,23 +12,23 @@ export class Rover {
   }
 
   move() {
-    const currentDir = this.currentPos[2];
+    const currentDir = this.currentPos.dir;
 
     if (currentDir === 'N') {
-      this.currentPos[1] += 1;
+      this.currentPos.y += 1;
     } else if (currentDir === 'E') {
-      this.currentPos[0] += 1;
+      this.currentPos.x += 1;
     } else if (currentDir === 'S') {
-      this.currentPos[1] -= 1;
+      this.currentPos.y -= 1;
     } else if (currentDir === 'W') {
-      this.currentPos[0] -= 1;
+      this.currentPos.x -= 1;
     }
   }
 
   rotate(cmd: RotateCommand) {
-    const currentDir = this.currentPos[2];
+    const currentDir = this.currentPos.dir;
 
-    this.currentPos[2] = cmd === 'L'
+    this.currentPos.dir = cmd === 'L'
       ? (CardinalPoint.indexOf(currentDir) === 0 ? CardinalPoint[CardinalPoint.length - 1] : CardinalPoint[CardinalPoint.indexOf(currentDir) - 1])
       : (CardinalPoint.indexOf(currentDir) === CardinalPoint.length - 1 ? CardinalPoint[0] : CardinalPoint[CardinalPoint.indexOf(currentDir) + 1]);
   }

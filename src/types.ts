@@ -1,4 +1,18 @@
-export type RoverPosition = [number, number, CardinalPointType];
+export type Plateau = {
+  readonly start: {
+    x: 0,
+    y: 0
+  },
+  end: {
+    x: number | undefined,
+    y: number | undefined
+  }
+}
+export type RoverPosition = {
+  x: number,
+  y: number,
+  dir: CardinalPointType
+};
 export type RoverCommands = MovingCommand | RotateCommand;
 export type MovingCommand = 'M';
 export type RotateCommand = 'L' | 'R';
