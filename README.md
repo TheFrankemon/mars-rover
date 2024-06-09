@@ -1,17 +1,22 @@
-# mars-rover-ts
+# mars-rover-react
 
-Console app done in TypeScript + Node.js to resolve the Mars Rover Code Challenge
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## To start
+## Available Scripts
 
-Clone the repository. Run `npm i` and then `npm start`. The app will start on the console...
+In the project directory, you can run:
 
-<img width="700" alt="image" src="https://github.com/TheFrankemon/mars-rover-ts/assets/7704372/bb9e5a27-920b-41d5-97e7-76f5c49a9138">
+### `npm start`
 
-The app supports line-by-line (multiline) input. After introducing the instructions, press ENTER on a new line to mark the end of instructions and process the result:
+Runs the app in the development mode.\
+_Automatically_ opens [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-<img width="700" alt="image" src="https://github.com/TheFrankemon/mars-rover-ts/assets/7704372/645e3ac6-8fd1-45f4-8b98-99987060c98a">
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-To exit at any time, press `ctrl+C`.
+### `npm run build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes, ready to be deployed.

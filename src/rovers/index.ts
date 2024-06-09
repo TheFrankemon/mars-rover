@@ -1,5 +1,5 @@
 import * as readline from 'readline';
-import { MarsRoversChallenge } from './src/mars-rovers';
+import { MarsRoversChallenge } from './mars-rovers';
 
 const rl = readline.createInterface({
   input: process.stdin,
