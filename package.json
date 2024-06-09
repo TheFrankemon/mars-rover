@@ -1,0 +1,20 @@
+{
+  "name": "mars-rover-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npx tsc && node ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheFrankemon/mars-rover-ts.git"
+  },
+  "author": "TheFrankemon",
+  "license": "ISC",
+  "homepage": "https://github.com/TheFrankemon/mars-rover-ts#readme"
+}
