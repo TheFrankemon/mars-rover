@@ -32,6 +32,12 @@ article {
 .input-section {
   display: flex;
   flex-direction: column;
+
+  &:nth-child(2) {
+    label {
+      align-self: flex-end;
+    }
+  }
 }
 
 label {
@@ -48,9 +54,8 @@ label {
   width: 300px;
   height: 100px;
   resize: none;
-  transform: skewX(20deg);
-  border: 6px solid #0f0f0f;
-  box-shadow: inset -2px 3px 20px 0px #ffffff30;
+  border: 0.1px solid #c4c4c4;
+  box-shadow: inset -1px 0px 9px 0px #ffffff1f;
   background-color: #272727;
   padding: 20px;
   filter: blur(1px);
@@ -62,10 +67,12 @@ label {
 .input-mode {
   color: #00ff00cc;
   height: 200px;
+  transform: skewX(15deg);
 }
 
 .output-mode {
   color: #00ffffcc;
+  transform: skewX(-15deg);
 
   &.error {
     color: black;
@@ -80,7 +87,7 @@ label {
   border-radius: 10px;
   margin-top: -40px;
   z-index: 0;
-  transform: skewX(20deg);
+  transform: skewX(15deg);
   background-color: transparent;
   border: 1px solid #00ff00cc;
   color: #00ff00cc;
