@@ -16,6 +16,12 @@ export class MarsRoversChallenge {
   input: string[];
 
   constructor(input: string[]) {
+    if (input === undefined) {
+      throw new Error('No instructions given.');
+    } else if (input.length < 3 || input.some(arr => arr.length === 0)) {
+      throw new Error('Not enough instructions.');
+    }
+
     this.input = input;
 
     this.plateau.end = this.setPlateauLimits();
@@ -29,6 +35,10 @@ export class MarsRoversChallenge {
   }
 
   private setPlateauLimits() {
+    if (this.input[0].match(/^\d+ \d+$/) === null) {
+      throw new Error('Plateau is not well formatted.');
+    }
+
     const parsedLimits = this.input[0].split(' ').map(digit => +digit);
     this.input.shift(); // remove the used plateau instruction & leave only rover instructions on the array
 
@@ -41,6 +51,10 @@ export class MarsRoversChallenge {
   private setRovers() {
     const rovers: Rover[] = [];
     for (let i = 0; i < this.input.length; i += 2) {
+      if (this.input[i].match(/^\d+ \d+ [NEWS]$/) === null) {
+        throw new Error('Rover instructions are not well formatted.');
+      }  
+
       const position = this.input[i].split(' ');
 
       rovers.push(new Rover(
